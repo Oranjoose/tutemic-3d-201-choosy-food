@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Fantasy town/stallRed.glb" type="PackedScene" id=1]
+[ext_resource path="res://Blocky characters/Models/Non-rigged/glTF/advancedCharacter.gltf" type="PackedScene" id=2]
+[ext_resource path="res://food.tscn" type="PackedScene" id=3]
+[ext_resource path="res://food_quiz.gd" type="Script" id=4]
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 1, 0.342856, 0.551522 )
+
+[node name="FoodQuiz" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.79634, 0.00371313, -1.04367 )
+script = ExtResource( 4 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="stallRed2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.196101, 0, -2.24144, 0, 2.25, 0, 2.24144, 0, 0.196101, 0, 0, 0 )
+
+[node name="AdventurerNPC" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.0841115, 0, 0.0540857, 0, 0.1, 0, -0.0540857, 0, 0.0841115, -1.85429, -0.00371265, 0.683971 )
+
+[node name="Body1" parent="AdventurerNPC" index="0"]
+transform = Transform( 1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, 1, 0, 0, 0 )
+
+[node name="DialogTrigger" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.35897 )
+
+[node name="CollisionShape" type="CollisionShape" parent="DialogTrigger"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.405302, 1.24572 )
+shape = SubResource( 2 )
+
+[node name="Food" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, -7.45058e-09, 0, 1, 0, 7.45058e-09, 0, 1, -0.50969, 1.49278, 0.00490558 )
+
+[node name="Food2" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, -7.45058e-09, 0, 1, 0, 7.45058e-09, 0, 1, 0.0448318, 1.48122, -0.0929853 )
+
+[node name="Food3" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, -7.45058e-09, 0, 1, 0, 7.45058e-09, 0, 1, 0.610555, 1.48122, -0.0929853 )
+[connection signal="body_entered" from="DialogTrigger" to="." method="_on_DialogTrigger_body_entered"]
+
+[editable path="AdventurerNPC"]
